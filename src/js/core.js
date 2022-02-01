@@ -1,43 +1,60 @@
 class Fifo {
-  constructor() {
-    // įdedame į localStorage sąrašą vardu "atmintis", po kableliu eina eina saugoma info
-    //this.atmintis = localStorage.setItem("atmintis", JSON.stringify(this.importJSON()));
+  constructor(specialistoVardas) {
+    // įdedame į localStorage sąrašą vardu this.specialistoVardas, po kableliu eina eina saugoma info
+    //this.atmintis = localStorage.setItem(this.specialistoVardas, JSON.stringify(this.importJSON()));
     //importJSON();
     // this.index = 1;
-    localStorage.setItem("atmintis", JSON.stringify([]));
+    this.specialistoVardas = specialistoVardas;
   }
   idetiIeile() {
-    //sukuriame kintamajį getMasyvasFromAtmintis ir į jį iš localstorage sąrašo paimame "atmintis" reikšmę
-    let getMasyvasFromAtmintis = localStorage.getItem("atmintis");
+    //sukuriame kintamajį getMasyvasFromAtmintis ir į jį iš localstorage sąrašo paimame this.specialistoVardas reikšmę
+    let getMasyvasFromAtmintis = localStorage.getItem(this.specialistoVardas);
     //keičiame į masyvo tipą iš string
-    getMasyvasFromAtmintis = JSON.parse(localStorage.getItem("atmintis"));
-    //masyve pridedame naują elementą, kuriame yra objektas saugoma reikšme id
-    // getMasyvasFromAtmintis.push({
-    //   "id:": getMasyvasFromAtmintis[getMasyvasFromAtmintis.length - 1],
-    // });
-    getMasyvasFromAtmintis.push({
-      id:
-        JSON.parse(localStorage.getItem("atmintis"))[
-          JSON.parse(localStorage.getItem("atmintis")).length - 1
-        ].id + 1,
-    });
-    //masyvą papildytą nauju elementu paverčiame į string tipą: JSON.stringify(getMasyvasFromAtmintis)
-    //ir išsaugome į localstorage "atmintis"
-    localStorage.setItem("atmintis", JSON.stringify(getMasyvasFromAtmintis));
+    console.log(getMasyvasFromAtmintis);
+    console.log(getMasyvasFromAtmintis);
+    console.log(localStorage);
+    if (getMasyvasFromAtmintis == null || getMasyvasFromAtmintis === "[]") {
+      localStorage.setItem(this.specialistoVardas, JSON.stringify([{ id: 1 }]));
+    } else {
+      getMasyvasFromAtmintis = JSON.parse(
+        localStorage.getItem(this.specialistoVardas)
+      );
+      //masyve pridedame naują elementą, kuriame yra objektas saugoma reikšme id
+      // getMasyvasFromAtmintis.push({
+      //   "id:": getMasyvasFromAtmintis[getMasyvasFromAtmintis.length - 1],
+      // });
+      getMasyvasFromAtmintis.push({
+        id:
+          JSON.parse(localStorage.getItem(this.specialistoVardas))[
+            JSON.parse(localStorage.getItem(this.specialistoVardas)).length - 1
+          ].id + 1,
+      });
+      //masyvą papildytą nauju elementu paverčiame į string tipą: JSON.stringify(getMasyvasFromAtmintis)
+      //ir išsaugome į localstorage this.specialistoVardas
+      localStorage.setItem(
+        this.specialistoVardas,
+        JSON.stringify(getMasyvasFromAtmintis)
+      );
+    }
     //padidiname indeksą vienetu sekančiam svečiui;
-    this.index++;
+    // this.index++;
   }
   isimtiIsEiles() {
-    let getMasyvasFromAtmintis2 = JSON.parse(localStorage.getItem("atmintis"));
+    let getMasyvasFromAtmintis2 = JSON.parse(
+      localStorage.getItem(this.specialistoVardas)
+    );
     getMasyvasFromAtmintis2.shift();
-    localStorage.setItem("atmintis", JSON.stringify(getMasyvasFromAtmintis2));
+    localStorage.setItem(
+      this.specialistoVardas,
+      JSON.stringify(getMasyvasFromAtmintis2)
+    );
     //this.atmintis
   }
   dabarPasSpecialista() {
-    return JSON.parse(localStorage.getItem("atmintis"))[0];
+    return JSON.parse(localStorage.getItem(this.specialistoVardas))[0];
   }
   sekantisPasSpecialista() {
-    return JSON.parse(localStorage.getItem("atmintis"))[1];
+    return JSON.parse(localStorage.getItem(this.specialistoVardas))[1];
   }
   importJSON() {
     fetch("./src/import-data.json")
@@ -46,21 +63,27 @@ class Fifo {
       })
       .then((myJson) => {
         console.log(myJson);
-        return localStorage.setItem("atmintis", JSON.stringify(myJson));
+        return localStorage.setItem(
+          // this.specialistoVardas,
+          "specialistas1",
+          JSON.stringify(myJson)
+        );
       });
   }
 }
 
-const specialistas1 = new Fifo();
+const specialistas1 = new Fifo("specialistas1");
+const specialistas2 = new Fifo("specialistas2");
+const specialistas3 = new Fifo("specialistas3");
 document
   .getElementById("newClient")
   .addEventListener("click", specialistas1.importJSON);
 
-// console.log(JSON.parse(localStorage.getItem("atmintis")));
+// console.log(JSON.parse(localStorage.getItem(this.specialistoVardas)));
 // specialistas1.idetiIeile();
 // specialistas1.idetiIeile();
 // specialistas1.idetiIeile();
-// console.log(JSON.parse(localStorage.getItem("atmintis")));
+// console.log(JSON.parse(localStorage.getItem(this.specialistoVardas)));
 // specialistas1.isimtiIsEiles();
 // console.log(specialistas1.atmintis);
 // console.log(specialistas1.dabarPasSpecialista());
