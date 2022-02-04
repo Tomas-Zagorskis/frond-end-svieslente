@@ -10,9 +10,6 @@ class Fifo {
     //sukuriame kintamajį getMasyvasFromAtmintis ir į jį iš localstorage sąrašo paimame this.specialistoVardas reikšmę
     let getMasyvasFromAtmintis = localStorage.getItem(this.specialistoVardas);
     //keičiame į masyvo tipą iš string
-    console.log(getMasyvasFromAtmintis);
-    console.log(getMasyvasFromAtmintis);
-    console.log(localStorage);
     if (getMasyvasFromAtmintis == null || getMasyvasFromAtmintis === "[]") {
       localStorage.setItem(this.specialistoVardas, JSON.stringify([{ id: 1 }]));
     } else {

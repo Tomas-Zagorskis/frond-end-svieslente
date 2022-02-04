@@ -1,4 +1,36 @@
+body {
+  margin: 0;
+  padding: 0;
+  color: #fff;
+}
 main {
   display: flex;
   gap: 50px;
+  background-color: hsl(102deg 81% 64%);
+  padding: 15px;
+  height: 100vh;
+  text-align: center;
+}
+.stulpelis {
+  flex: 2 1 auto;
+}
+.specialistoVardas {
+  background-color: #a4ff7e;
+  padding: 15px;
+  border-radius: 5px;
+  text-align: center;
+}
+.aptarnaujamasNumeris {
+  margin-top: 20px;
+  background-color: #80d15b;
+  padding: 15px;
+  border-radius: 5px;
+  text-align: center;
+}
+.kitasNumeris {
+  margin-top: 20px;
+  background-color: #a4ff7e;
+  padding: 15px;
+  border-radius: 5px;
+  text-align: center;
 }
