@@ -2,6 +2,8 @@ body {
   margin: 0;
   padding: 0;
   color: #fff;
+  font-size: 42px;
+  overflow: hidden;
 }
 main {
   display: flex;
@@ -33,4 +35,24 @@ main {
   padding: 15px;
   border-radius: 5px;
   text-align: center;
+}
+.ikeltiDuomenis,
+.generuotiSpecialistus,
+.pridetiKlienta {
+  background-color: #a4ff7e;
+  padding: 15px;
+  border-radius: 5px;
+  text-align: center;
+}
+button {
+  border-radius: 3px;
+  background-color: rgba(0, 119, 255, 0.541);
+  border: 1px rgba(0, 119, 255, 0.541) solid;
+  color: white;
+  cursor: pointer;
+}
+select {
+  margin: auto;
+  border-radius: 3px;
+  border: 2px grey solid;
 }

@@ -1,15 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="lt">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin</title>
+    <link rel="stylesheet" href="src/css/style.css" />
   </head>
   <body>
-    <div>
-      <button id="newClient" type="submit">Įsirašome į localStorage</button>
-      <script src="src/js/core.js"></script>
-    </div>
+    <main>
+      <div class="ikeltiDuomenis">
+        <div>
+          <button id="newClient" type="submit">Įsirašome į localStorage</button>
+        </div>
+      </div>
+      <div class="generuotiSpecialistus">
+        <h2>Specialistų valdymas</h2>
+        <div class="specialistuDeze">
+          <button id="pridetiSpecialista">Pridėti specialistą</button>
+          <button id="atimtiSpecialista">Atimti specialistą</button>
+        </div>
+      </div>
+
+      <div class="pridetiKlienta">
+        <select id="specialistuSarasas"></select>
+        <button id="pridetiKlienta">Pridėti klientą</button>
+      </div>
+    </main>
+    <script src="src/js/core.js"></script>
+    <!-- <script src="src/js/admin.js"></script> -->
   </body>
 </html>

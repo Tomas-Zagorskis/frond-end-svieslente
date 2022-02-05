@@ -72,9 +72,9 @@ class Fifo {
 const specialistas1 = new Fifo("specialistas1");
 const specialistas2 = new Fifo("specialistas2");
 const specialistas3 = new Fifo("specialistas3");
-document
-  .getElementById("newClient")
-  .addEventListener("click", specialistas1.importJSON);
+// document
+//   .getElementById("newClient")
+//   .addEventListener("click", specialistas1.importJSON);
 
 // console.log(JSON.parse(localStorage.getItem(this.specialistoVardas)));
 // specialistas1.idetiIeile();
@@ -118,3 +118,34 @@ document
 // sessionStorage.setItem("Labas", "Pasauli");
 // //gauti sessionStorage info
 // console.log(sessionStorage.getItem("Labas"));
+
+let html = "";
+for (let index = 1; index <= localStorage.length; index++) {
+  html += `<option value=${localStorage.key(index - 1)}>${localStorage.key(
+    index - 1
+  )}</option>`;
+}
+document.getElementById("specialistuSarasas").innerHTML = html;
+
+// pridedam klienta pas specialista.
+// @export
+// document
+//   .getElementById("pridetiKlienta")
+//   .addEventListener("click", pridetiKlienta);
+// function pridetiKlienta() {
+//   const specialistas = document.getElementById("specialistuSarasas").value;
+//   musuCallBack(specialistas);
+//   // specialistas.idetiIeile();
+// }
+
+function musuCallBack(n) {
+  specialistas1.idetiIeile();
+}
+// aptarnauto kliento isemimimas is eiles
+document
+  .getElementById("kviestiSekanti")
+  .addEventListener("click", isimtiKlienta);
+function isimtiKlienta() {
+  const specialistas = document.getElementById("specialistuSarasas").value;
+  specialistas1.isimtiIsEiles();
+}
